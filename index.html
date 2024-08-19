@@ -98,6 +98,23 @@
                         <div class="step">
                             <p>Com sua <strong>doação</strong> você nos ajuda a promover educação, saúde e inclusão aos nossos excepscionais.</p>
                             <div class="mb-3">
+                                <label for="valor" class="form-label">Valor</label>
+                                
+                                <select name="valor" class="form-select" id="valorSelect" onchange="checkValue()">
+                                    <option value="0" selected>Selecione um valor</option>
+                                    <option value="40">R$ 40,00</option>
+                                    <option value="60">R$ 60,00</option>
+                                    <option value="150">R$ 150,00</option>
+                                    <option value="outro">Outro valor</option>
+                                </select>
+                                
+                            </div>
+                            
+                            <div class="mb-3" id="outroValorDiv" style="display: none;">
+                                <label for="outroValor" class="form-label">Informe o valor</label>
+                                <input type="number" name="outroValor" class="form-control" id="outroValor" placeholder="Digite o valor">
+                            </div>
+                            <div class="mb-3">
                                 <label for="numero-cartao" class="form-label">Número do Cartão</label>
                                 <input type="text" class="form-control" id="numero-cartao">
                             </div>
@@ -150,6 +167,18 @@
     </footer>
 
     <script>
+        function checkValue() {
+            const selectElement = document.getElementById("valorSelect");
+            const outroValorDiv = document.getElementById("outroValorDiv");
+
+            if (selectElement.value === "outro") {
+                outroValorDiv.style.display = "block";
+            } else {
+                outroValorDiv.style.display = "none";
+            }
+        }
+
+
         let currentStep = 0;
         const steps = document.querySelectorAll('.step');
     
